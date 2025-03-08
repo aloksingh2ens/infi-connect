@@ -87,4 +87,102 @@ export default async function saveShopData(session, admin) {
   } catch (error) {
     console.error("❌ Error saving shop data:", error);
   }
-}
+};
+
+
+
+// old way by using Rest API
+
+// import { shopifyApi, LATEST_API_VERSION } from "@shopify/shopify-api";
+// import prisma from "../../app/db.server";
+
+// export const saveShopData = async (shopDomain) => {
+//   try {
+//     // Fetch session from Prisma
+//     const session = await prisma.session.findUnique({
+//       where: { shop: shopDomain },
+//     });
+
+//     if (!session) {
+//       throw new Error("Session not found for the given shop.");
+//     }
+
+//     console.log("Session Found: ", session);
+
+//     // Initialize Shopify API client
+//     const shopify = shopifyApi({
+//       apiKey: process.env.SHOPIFY_API_KEY,
+//       apiSecretKey: process.env.SHOPIFY_API_SECRET,
+//       scopes: process.env.SCOPES.split(","),
+//       hostName: process.env.SHOPIFY_APP_URL.replace(/https:\/\//, ""),
+//       apiVersion: LATEST_API_VERSION,
+//     });
+
+//     const client = new shopify.clients.Rest({ session });
+
+//     // Fetch shop data from Shopify
+//     const { body } = await client.get({ path: "shop" });
+//     const shopData = body.shop;
+//     console.log("Fetched Shop Data:", shopData);
+
+//     // Upsert shop data in Prisma
+//     await prisma.shop.upsert({
+//       where: { myshopify_domain: session.shop },
+//       update: {
+//         shop_id: BigInt(shopData.id),
+//         name: shopData.name,
+//         email: shopData.email || null,
+//         country: shopData.country,
+//         country_code: shopData.country_code,
+//         currency: shopData.currency,
+//         plan_name: shopData.plan_name,
+//         shop_owner: shopData.shop_owner,
+//         timezone: shopData.iana_timezone,
+//         primary_locale: shopData.primary_locale,
+//         address1: shopData.address1 || null,
+//         address2: shopData.address2 || null,
+//         city: shopData.city || null,
+//         province: shopData.province || null,
+//         province_code: shopData.province_code || null,
+//         zip: shopData.zip || null,
+//         phone: shopData.phone || null,
+//         customer_email: shopData.customer_email || null,
+//         has_storefront: shopData.has_storefront,
+//         multi_location_enabled: shopData.multi_location_enabled,
+//         password_enabled: shopData.password_enabled,
+//         accessToken: session.accessToken,
+//       },
+//       create: {
+//         myshopify_domain: session.shop,
+//         shop_id: BigInt(shopData.id),
+//         name: shopData.name,
+//         email: shopData.email || null,
+//         country: shopData.country,
+//         country_code: shopData.country_code,
+//         currency: shopData.currency,
+//         plan_name: shopData.plan_name,
+//         shop_owner: shopData.shop_owner,
+//         timezone: shopData.iana_timezone,
+//         primary_locale: shopData.primary_locale,
+//         address1: shopData.address1 || null,
+//         address2: shopData.address2 || null,
+//         city: shopData.city || null,
+//         province: shopData.province || null,
+//         province_code: shopData.province_code || null,
+//         zip: shopData.zip || null,
+//         phone: shopData.phone || null,
+//         customer_email: shopData.customer_email || null,
+//         has_storefront: shopData.has_storefront,
+//         multi_location_enabled: shopData.multi_location_enabled,
+//         password_enabled: shopData.password_enabled,
+//         accessToken: session.accessToken,
+//       },
+//     });
+
+//     console.log("Shop data successfully saved to the database.");
+//   } catch (error) {
+//     console.error("Error saving shop data:", error);
+//   } finally {
+//     await prisma.$disconnect();
+//   }
+// };
