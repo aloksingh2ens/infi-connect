@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "e4ff188d7b5ec9e2d0cdae9de0cc8ee5"
-application_url = "https://park-electronics-helps-constitute.trycloudflare.com"
+application_url = "https://alfred-appreciate-possess-profession.trycloudflare.com"
 embedded = true
 name = "InfiConnect"
 handle = "inficonnect"
@@ -23,13 +23,13 @@ api_version = "2025-01"
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products,read_orders,read_customers,write_customers"
+scopes = "write_products,read_orders,read_customers,write_customers,read_products"
 
 [auth]
 redirect_urls = [
-  "https://park-electronics-helps-constitute.trycloudflare.com/auth/callback",
-  "https://park-electronics-helps-constitute.trycloudflare.com/auth/shopify/callback",
-  "https://park-electronics-helps-constitute.trycloudflare.com/api/auth/callback"
+  "https://alfred-appreciate-possess-profession.trycloudflare.com/auth/callback",
+  "https://alfred-appreciate-possess-profession.trycloudflare.com/auth/shopify/callback",
+  "https://alfred-appreciate-possess-profession.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]

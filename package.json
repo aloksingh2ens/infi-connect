@@ -4,6 +4,7 @@
   "scripts": {
     "build": "remix vite:build",
     "dev": "shopify app dev",
+    "server": "nodemon src/api/index.js",
     "config:link": "shopify app config link",
     "generate": "shopify app generate",
     "deploy": "shopify app deploy",
@@ -35,7 +36,11 @@
     "@shopify/shopify-api": "^11.9.0",
     "@shopify/shopify-app-remix": "^3.7.0",
     "@shopify/shopify-app-session-storage-prisma": "^6.0.0",
+    "axios": "^1.8.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
     "isbot": "^5.1.0",
+    "mongoose": "^8.12.1",
     "prisma": "^6.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -51,6 +56,7 @@
     "@types/react-dom": "^18.2.14",
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^10.0.1",
+    "nodemon": "^3.1.9",
     "prettier": "^3.2.4",
     "typescript": "^5.2.2",
     "vite": "^5.1.3"

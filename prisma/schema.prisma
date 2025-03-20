@@ -32,7 +32,7 @@ model Session {
   emailVerified Boolean?  @default(false)
 }
 
-model Shop {
+model shops {
   id                           String    @id @default(auto()) @map("_id") @db.ObjectId
   myshopify_domain             String    @unique
   shop_id                      BigInt    @unique

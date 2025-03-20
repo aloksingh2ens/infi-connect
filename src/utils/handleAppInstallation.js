@@ -77,7 +77,7 @@ export default async function saveShopData(session, admin) {
       primary_domain_url: shopData.primaryDomain?.url || "",
     };
 
-    await prisma.shop.upsert({
+    await prisma.shops.upsert({
       where: { myshopify_domain: session.shop },
       update: shopDetails,
       create: shopDetails,
